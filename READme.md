@@ -39,6 +39,11 @@ Effectively creating a system design and its implementation that we were that wa
 
 What we have today is a very simple prototype. For the next version, we hope to have a GUI to load and modify data. We would also want to use the actual device as a link between the app and the server.
 
+## Images
+![distrk01](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/images/DisTrk01.png)
+
+![distrk02](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/images/DisTrk02.png)
+
 ## Diagrams
 
 ## ER Model
