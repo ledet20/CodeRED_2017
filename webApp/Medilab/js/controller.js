@@ -23,9 +23,9 @@ client.on('message', function(topic, message) {
   statement
 }
 */
-  //  w3.displayObject("id0100", json);
-	w3.displayObject("id0200", json);
-	w3.displayObject("id0300", json);
+   w3.displayObject("id01", json);
+	w3.displayObject("id02", json);
+	// w3.displayObject("id0300", json);
 	//w3.displayObject("id04", json);
 	//w3.displayObject("id05", json);
 	//w3.displayObject("id06", json);
@@ -34,7 +34,10 @@ client.on('message', function(topic, message) {
 	
 	for(var i = 0; i < json.deparments.length; i++ ) {
 		var value = (i + 1);
-		w3.displayObject(value, json );
+		console.log(value);
+		console.log(value.toString());
+
+		 // w3.displayObject(value.toString(), json );
 		console.log(i);
 		console.log(value);
 	}
