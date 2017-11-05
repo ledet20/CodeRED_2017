@@ -42,10 +42,10 @@ What we have today is a very simple prototype. For the next version, we hope to 
 ## Diagrams
 
 ## ER Model
-![er model](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/er_model.png)
+![er model](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/er_model.jpg)
 
 ## Architecture
-![architecture](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/architecture.png)
+![architecture](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/architeture.jpg)
 
 ## Sequence
-![sequence](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/sequencec.png)
+![sequence](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/sequencec.jpg)
