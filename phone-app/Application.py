@@ -4,6 +4,7 @@ import paho.mqtt.client as mqtt
 import webbrowser
 import time
 from tkinter import *
+import tkinter as ttk
 from random import randint
 
 root = Tk()
@@ -15,7 +16,7 @@ root.geometry("%dx%d+0+0" % (res_width, res_height))
 
 # Known and given values
 phone_device = "A1EKAC1"
-patientID = 10923
+patientID = 11923801
 bounds = (1, 3)
 
 
@@ -25,12 +26,8 @@ def scanDevices(event):
     while (True):
         simulated_number = randint(1, 3)
         if(simulated_number == 1):
-            text_broker_activity.config(state=NORMAL)
-            text_broker_activity.insert(END, "Swiped device %s found." % phone_device)
-            time.sleep(5)
-            text_broker_activity.insert(END, "\nInitiating confirmation of associated ID %i." % patientID)
-            text_broker_activity.config(state=NORMAL)
-            # connect to Server
+            text_broker_activity.insert(END, "\nSwiped device %s found." % phone_device)
+            client.publish("distrk/new", patientID)
             # MQTT verify(input_ID)
             break
 
@@ -39,15 +36,24 @@ def swipe(event):
     scanDevices(event)
 
 def manual_connect():
-    input_ID = 5  # (!) Replace later
-    # pull input from textbox
+    inputID = entry_manualID.get()
+    print(inputID)
+    client.publish("distrk/new", inputID)
+
     # connect to Server
     # MQTT result_key = verify(input_ID)
     # if result key not == "OK"
     #       display showInvalid()
 
+def on_publish(client, userdata, result):
+    print("Data published with result code %s" % result)
+
+def on_connect(client, userdata, flags, rc):
+    text_broker_activity.insert(END, "Broker connected with result code %s." % rc)
+
 def subscribe():
-    webbrowser.open_new("http://google.com")
+    print("This function is only activated when the patient ID is verified")
+    print("What is returned then is a link to the website?")
     # Open web browser and display web page
 
 def back():
@@ -76,6 +82,9 @@ def show_error():
 
     # invalid ID
 
+def temp_cancel(): # (!)
+    text_broker_activity.insert(END, "\nDisconnected")
+    client.disconnect()
 
 # Main Frame
 frame_main = Frame(root)
@@ -87,6 +96,7 @@ frame_phone.place(x=0, y=10, height=res_height-20, width=750, bordermode=OUTSIDE
 
 label_phone_device = Label(frame_phone, text=phone_device, font="120", background="#25383C", foreground="white")
 button_go = Button(frame_phone, text="GO", background = "yellowgreen")
+button_cancel = Button(frame_phone, text="CLIENT CANCEL", background = "orange")
 label_patientID = Label(frame_phone, font="50", text="Patient ID ")
 entry_manualID = Entry(frame_phone, font="50", width=45)
 label_swipe = Label(frame_phone, text="Swipe or", background="#25383C", foreground="white")
@@ -96,12 +106,14 @@ button_ok = Button(frame_phone, text="Ok", background='yellowgreen')
 
 label_phone_device.place(x=5, y=5)
 button_go.place(x=620, y=800, width=100)
+button_cancel.place(x=620, y=700, width=100)
 label_patientID.place(x=15, y=800)
 entry_manualID.place(x=130, y=800)
 label_swipe.place(x=325, y=765)
 
 # Config Changes
-button_go.config(command=lambda: show_error())
+button_go.config(command=lambda: manual_connect())
+button_cancel.config(command=lambda: temp_cancel())
 label_phone_device.config(font=("Helvetica",44))
 label_swipe.config(font=("Helvetica",15))
 
@@ -109,14 +121,18 @@ label_swipe.config(font=("Helvetica",15))
 frame_broker = Frame(frame_main, background="grey")
 frame_broker.place(x=780, y=10, height=res_height-20, width=500, bordermode=OUTSIDE)
 
-text_broker_activity = Entry(frame_broker, state=DISABLED)
+text_broker_activity = Text(frame_broker)
 label_brokerID = Label(frame_broker, text="Broker ID #1923810928197917319")
-text_broker_activity = Text(frame_broker, state=DISABLED)
 
 label_brokerID.place(x=10, y=100, height=20, width=475)
 text_broker_activity.place(x=10, y=150, height=700, width=475)
 
+## MQTT
+client = mqtt.Client()
+client.connect("iot.eclipse.org", 1883, 60)
+client.on_connect = on_connect("", patientID, "", "0")
+client.on_publish = on_publish("", patientID, "0")
 
 root.bind("<Up>", swipe)
-
 root.mainloop()
+client.loop_forever()
