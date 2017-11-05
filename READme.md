@@ -1,6 +1,6 @@
 # Distrk
 
-We were inspired to create this simple tool that would make communication between patients more effective in terms of automating the discharge process. By allowing the physician to provide the patient with a detailed list of procedures we would be able to make the discharge process faster. Our main concern when building this product was to bridge the gap between any miscommunication that may occur between the patient and the physician. 
+We were inspired to create this simple tool that would make communication between patients more effective in terms of automating the discharge process. By allowing the physician to provide the patient with a detailed list of procedures we would be able to make the discharge process faster. Our main concern when building this product was to bridge the gap between any miscommunication that may occur between the patient and the physician.
 
 ## What your submission does?
 
@@ -29,12 +29,23 @@ The server is the component of our app that takes care of information routing be
 The server is written in Golang, and uses gobot for MQTT communication and gorm for database manipulations.
 
 ## Challenges you ran into, and how you overcame them?
-One of the biggest challenges was to decide which programming languages and frameworks to use that would be able to effectively integrate with our database and each other. We also were able to integrate MQTT into our program even though no one in our group had prior knowledge communication protocol before let alone network programming. Also, we had to effectively send data to and from different programming languages and databases. 
+One of the biggest challenges was to decide which programming languages and frameworks to use that would be able to effectively integrate with our database and each other. We also were able to integrate MQTT into our program even though no one in our group had prior knowledge communication protocol before let alone network programming. Also, we had to effectively send data to and from different programming languages and databases.
 
 ## Accomplishments that you're proud of
 
-Effectively creating a system design and its implementation that we were that was able to serve as a guide throughout the whole project. As a team that had formed the day of the hackathon, we were able to effectively collaborate with each other and learn from each other's skillsets. 
+Effectively creating a system design and its implementation that we were that was able to serve as a guide throughout the whole project. As a team that had formed the day of the hackathon, we were able to effectively collaborate with each other and learn from each other's skillsets.
 
 ## What's next for your product?
 
-What we have today is a very simple prototype. For the next version, we hope to have a GUI to load and modify data. We would also want to use the actual device as a link between the app and the server. 
+What we have today is a very simple prototype. For the next version, we hope to have a GUI to load and modify data. We would also want to use the actual device as a link between the app and the server.
+
+## Diagrams
+
+## ER Model
+![er model](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/er_model.png)
+
+## Architecture
+![architecture](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/architecture.png)
+
+## Sequence
+![sequence](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/sequencec.png)
