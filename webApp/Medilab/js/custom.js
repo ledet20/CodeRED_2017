@@ -28,16 +28,24 @@
 
 
 $(document).ready(function(){ 
-	alert("work");
+	alert("work " + ticketNum);
 	
 	var ticketNum = window.$vars.value_out;
 
     for(var i = 0; i<ticketNum;i++){
      var value = (i + 1);
-     alert("work");
+   
 	$('<div id="addedDiv_num" />').text(value + ':').appendTo('.containerDischarge');
 	 //$('<div/>').appendTo('.containerDischarge').text("here is some text");   
        }
+});
+
+
+$('.button').click(function() {
+	client.publish("distrk/nfc-swipe",$('.input').val());
+	//alert($('.input').val());
+	//alert($(this).value);
+	//client.publish("distrk/nfc-swipe", "1");
 });
 
 
