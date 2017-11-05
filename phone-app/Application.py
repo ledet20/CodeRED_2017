@@ -37,7 +37,10 @@ def swipe(event):
 
 def manual_connect():
     inputID = entry_manualID.get()
-    print(inputID)
+    if (len(str(inputID)) == 0):
+        text_broker_activity.insert(END, "\nDischarge request rejected with missing ID.")
+    else:
+        text_broker_activity.insert(END, "\nDischarge of patient requested")
     client.publish("distrk/new", inputID)
 
     # connect to Server
@@ -82,9 +85,7 @@ def show_error():
 
     # invalid ID
 
-def temp_cancel(): # (!)
-    text_broker_activity.insert(END, "\nDisconnected")
-    client.disconnect()
+
 
 # Main Frame
 frame_main = Frame(root)
@@ -96,7 +97,6 @@ frame_phone.place(x=0, y=10, height=res_height-20, width=750, bordermode=OUTSIDE
 
 label_phone_device = Label(frame_phone, text=phone_device, font="120", background="#25383C", foreground="white")
 button_go = Button(frame_phone, text="GO", background = "yellowgreen")
-button_cancel = Button(frame_phone, text="CLIENT CANCEL", background = "orange")
 label_patientID = Label(frame_phone, font="50", text="Patient ID ")
 entry_manualID = Entry(frame_phone, font="50", width=45)
 label_swipe = Label(frame_phone, text="Swipe or", background="#25383C", foreground="white")
@@ -106,14 +106,12 @@ button_ok = Button(frame_phone, text="Ok", background='yellowgreen')
 
 label_phone_device.place(x=5, y=5)
 button_go.place(x=620, y=800, width=100)
-button_cancel.place(x=620, y=700, width=100)
 label_patientID.place(x=15, y=800)
 entry_manualID.place(x=130, y=800)
 label_swipe.place(x=325, y=765)
 
 # Config Changes
 button_go.config(command=lambda: manual_connect())
-button_cancel.config(command=lambda: temp_cancel())
 label_phone_device.config(font=("Helvetica",44))
 label_swipe.config(font=("Helvetica",15))
 
