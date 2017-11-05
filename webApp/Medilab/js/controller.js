@@ -9,7 +9,7 @@ client.on('message', function(topic, message) {
 
     console.log(JSON.parse(message.toString()));
      json = JSON.parse(message.toString());
-	 var deparments_id = json.deparments[0].id;
+	 var consults_id = json.Consults[0].id;
 
 	/*
      window.id = json.id;
@@ -25,34 +25,36 @@ client.on('message', function(topic, message) {
 */
    w3.displayObject("id01", json);
 	w3.displayObject("id02", json);
+	
+	
 	// w3.displayObject("id0300", json);
 	//w3.displayObject("id04", json);
 	//w3.displayObject("id05", json);
 	//w3.displayObject("id06", json);
 	
-	console.log(json.deparments.length);
+	console.log(json.Consults.length);
 	
 	for(var i = 0; i < 2; i++ ) {
 		var value = (i + 1);
-		console.log(value);
+	//	console.log(value);
 		console.log(value.toString());
 
 		 // w3.displayObject(value.toString(), json );
-		console.log(i);
-		console.log(value);
+	//	console.log(i);
+	//	console.log(value);
 	}
 	
 });
 
 	for(var i = 0; i < 2; i++ ) {
 		var value = (i + 1);
-		console.log(value);
-		console.log(value.toString());
+		//console.log(value);
+		//console.log(value.toString());
 		window.$vars = {
         value_out: value
     };
 
 		 // w3.displayObject(value.toString(), json );
-		console.log(i);
-		console.log(value);
+	//	console.log(i);
+	//	console.log(value);
 	}
