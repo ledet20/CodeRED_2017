@@ -48,4 +48,4 @@ What we have today is a very simple prototype. For the next version, we hope to 
 ![architecture](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/architeture.jpg)
 
 ## Sequence
-![sequence](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/sequencec.jpg)
+![sequence](https://raw.githubusercontent.com/Christopher-Hill/CodeRED_2017/master/diagrams/sequence.jpg)
