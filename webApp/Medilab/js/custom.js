@@ -41,6 +41,14 @@ $(document).ready(function(){
 });
 
 
+$('.button').click(function() {
+	client.publish("distrk/nfc-swipe",$('.input').val());
+	//alert($('.input').val());
+	//alert($(this).value);
+	//client.publish("distrk/nfc-swipe", "1");
+});
+
+
 
 
 
