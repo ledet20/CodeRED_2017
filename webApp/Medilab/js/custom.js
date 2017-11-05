@@ -25,3 +25,27 @@
     });
     
 })(jQuery);
+
+
+$(document).ready(function(){ 
+	alert("work");
+	
+	var ticketNum = 4;
+
+    for(var i = 0; i<ticketNum;i++){
+     var value = (i + 1);
+	$('<div id="addedDiv_num" />').text(value + ':').appendTo('.containerDischarge');
+	 //$('<div/>').appendTo('.containerDischarge').text("here is some text");   
+       }
+});
+
+
+
+
+
+
+
+
+
+
+
