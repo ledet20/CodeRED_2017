@@ -14,4 +14,6 @@ client.on('message', function(topic, message) {
     var deparments_id = json.deparments[0].id;
     var deparments_name = json.deparments[0].name;
     var deparments_location = json.deparments[0].location;
+
+    w3.displayObject("id01", json);
 });
