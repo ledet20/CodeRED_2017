@@ -4,6 +4,15 @@ client.on("connect", function() {
     client.subscribe('distrk/patient/1');
 });
 client.on('message', function(topic, message) {
-    console.log(topic);
-    console.log(message);
+    console.log(message.toString());
+    console.log(typeof message.toString())
+    var msg = JSON.stringify(message.toString())
+    var msg1 = JSON.parse(msg);
+
+    console.log(typeof msg)
+    console.log(typeof msg1)
+    console.log(msg1);
+    console.log(msg1.name);
+
+
 });
