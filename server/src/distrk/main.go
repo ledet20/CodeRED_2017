@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
+	// "time"
 
 	"gobot.io/x/gobot"
 	"gobot.io/x/gobot/platforms/mqtt"
@@ -51,11 +52,23 @@ func main() {
 					}
 				} else {
 					fmt.Println(err)
+					mqttAdaptor.Publish("distrk/patient/not-found", []byte{})
 				}
 			} else {
 				fmt.Println("Invalid payload \"", id, "\"")
 			}
 		})
+
+		// gobot.Every(1*time.Second, func() {
+		// 	patientJSON, err := getPatientJSON(1)
+		// 	if err == nil {
+		// 		parsed, err := json.Marshal(patientJSON)
+		// 		if err == nil {
+		// 			fmt.Println("Publishing...")
+		// 			mqttAdaptor.Publish("distrk/patient", parsed)
+		// 		}
+		// 	}
+		// })
 	}
 
 	// Starts the listener.

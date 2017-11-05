@@ -49,11 +49,14 @@ func loadData(db *gorm.DB) {
 
 	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 1, time.Now(), time.Now(), nil, 1, false)
 	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 2, time.Now(), time.Now(), nil, 2, false)
-	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 3, time.Now(), time.Now(), nil, 3, true)
-	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 4, time.Now(), time.Now(), nil, 4, false)
+	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 3, time.Now(), time.Now(), nil, 2, true)
+	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 4, time.Now(), time.Now(), nil, 3, false)
+	db.Exec("INSERT INTO consults VALUES(?, ?, ?, ?, ?, ?)", 5, time.Now(), time.Now(), nil, 4, false)
 
 	db.Exec("INSERT INTO patients_consults VALUES(?, ?)", 1, 1)
 	db.Exec("INSERT INTO patients_consults VALUES(?, ?)", 1, 2)
+
 	db.Exec("INSERT INTO patients_consults VALUES(?, ?)", 2, 3)
 	db.Exec("INSERT INTO patients_consults VALUES(?, ?)", 2, 4)
+	db.Exec("INSERT INTO patients_consults VALUES(?, ?)", 2, 5)
 }

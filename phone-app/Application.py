@@ -19,7 +19,6 @@ phone_device = "A1EKAC1"
 patientID = 11923801
 bounds = (1, 3)
 
-
 # Functions
 def scanDevices(event):
     simulated_number = 5
@@ -41,23 +40,8 @@ def manual_connect():
         text_broker_activity.insert(END, "\nDischarge request rejected with missing ID.")
     else:
         text_broker_activity.insert(END, "\nDischarge of patient requested")
+
     client.publish("distrk/new", inputID)
-
-    # connect to Server
-    # MQTT result_key = verify(input_ID)
-    # if result key not == "OK"
-    #       display showInvalid()
-
-def on_publish(client, userdata, result):
-    print("Data published with result code %s" % result)
-
-def on_connect(client, userdata, flags, rc):
-    text_broker_activity.insert(END, "Broker connected with result code %s." % rc)
-
-def subscribe():
-    print("This function is only activated when the patient ID is verified")
-    print("What is returned then is a link to the website?")
-    # Open web browser and display web page
 
 def back():
     label_error.place_forget()
@@ -126,11 +110,25 @@ label_brokerID.place(x=10, y=100, height=20, width=475)
 text_broker_activity.place(x=10, y=150, height=700, width=475)
 
 ## MQTT
+def on_connect(client, userdata, flags, rc):
+    text_broker_activity.insert(END, "Broker connected with result code %s." % rc)
+    client.subscribe("distrk/nfc-swipe")
+
+def on_publish(client, userdata, result):
+    print("Data published with result code %s" % result)
+
+def on_message(client, userdata, msg):
+    if msg.topic == "distrk/nfc-swipe":
+        print("Received NFC Swipe, forwarding to server...")
+        client.publish("distrk/new", msg.payload)
+
 client = mqtt.Client()
 client.connect("iot.eclipse.org", 1883, 60)
-client.on_connect = on_connect("", patientID, "", "0")
-client.on_publish = on_publish("", patientID, "0")
+client.on_connect = on_connect
+client.on_publish = on_publish
+client.on_message = on_message
+client.loop_start()
 
 root.bind("<Up>", swipe)
 root.mainloop()
-client.loop_forever()
+client.loop_stop()
