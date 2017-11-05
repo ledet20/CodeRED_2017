@@ -34,6 +34,7 @@ func main() {
 
 	// Connects the the public PAHO MQTT broker.
 	mqttAdaptor := mqtt.NewAdaptor("tcp://iot.eclipse.org:1883", "distrk_server")
+
 	// Work thread.
 	work := func() {
 		mqttAdaptor.On("distrk/new", func(msg mqtt.Message) {
@@ -56,6 +57,7 @@ func main() {
 			}
 		})
 	}
+
 	// Starts the listener.
 	robot := gobot.NewRobot(
 		"mqttRobot",
