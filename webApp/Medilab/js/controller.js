@@ -1,7 +1,7 @@
 var client = mqtt.connect("ws://iot.eclipse.org:80/ws")
 client.on("connect", function() {
     console.log('connected');
-    client.subscribe('distrk/patient/1');
+    client.subscribe('distrk/patient');
 });
 
 
@@ -32,7 +32,7 @@ client.on('message', function(topic, message) {
 	
 	console.log(json.deparments.length);
 	
-	for(var i = 0; i < json.deparments.length; i++ ) {
+	for(var i = 0; i < 2; i++ ) {
 		var value = (i + 1);
 		console.log(value);
 		console.log(value.toString());
@@ -44,3 +44,15 @@ client.on('message', function(topic, message) {
 	
 });
 
+	for(var i = 0; i < 2; i++ ) {
+		var value = (i + 1);
+		console.log(value);
+		console.log(value.toString());
+		window.$vars = {
+        value_out: value
+    };
+
+		 // w3.displayObject(value.toString(), json );
+		console.log(i);
+		console.log(value);
+	}

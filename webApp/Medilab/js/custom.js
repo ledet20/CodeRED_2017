@@ -30,10 +30,11 @@
 $(document).ready(function(){ 
 	alert("work");
 	
-	var ticketNum = 4;
+	var ticketNum = window.$vars.value_out;
 
     for(var i = 0; i<ticketNum;i++){
      var value = (i + 1);
+     alert("work");
 	$('<div id="addedDiv_num" />').text(value + ':').appendTo('.containerDischarge');
 	 //$('<div/>').appendTo('.containerDischarge').text("here is some text");   
        }
